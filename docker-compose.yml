@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile.django
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./code:/code
+    ports:
+      - "8000:8000"
+
+  react:
+    build:
+      context: .
+      dockerfile: Dockerfile.react
+    command: npm start
+    volumes:
+      - ./app:/app
+    ports:
+      - "3000:3000"
